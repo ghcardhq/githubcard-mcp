@@ -38,7 +38,7 @@
   "packages": [
     {
       "registryType": "npm",
-      "identifier": "ghcard",
+      "identifier": "@ghcardhq/ghcard",
       "version": "0.1.0",
       "runtimeHint": "npx",
       "transport": { "type": "stdio" },

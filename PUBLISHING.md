@@ -3,12 +3,12 @@
 `server.json` registers the server as `com.githubcard/mcp` in the
 [official MCP registry](https://registry.modelcontextprotocol.io). Registry
 names under `com.githubcard/` are proved by a DNS record on `githubcard.com`.
-The npm package `ghcard` is checked separately, through its
+The npm package `@ghcardhq/ghcard` is checked separately, through its
 `"mcpName": "com.githubcard/mcp"` field.
 
 ## Before the first publish
 
-1. **Publish the npm package first.** The registry checks that `ghcard@<version>`
+1. **Publish the npm package first.** The registry checks that `@ghcardhq/ghcard@<version>`
    exists on npm and carries the matching `mcpName`. See
    [ghcardhq/ghcard](https://github.com/ghcardhq/ghcard) for how to release it.
 2. **Deploy githubcard.com** with the `/mcp` endpoint, so the remote URL answers.
@@ -55,6 +55,6 @@ curl -s "https://registry.modelcontextprotocol.io/v0/servers?search=com.githubca
 
 ## New versions
 
-When `ghcard` is released at a new version, update both `version` fields in
+When `@ghcardhq/ghcard` is released at a new version, update both `version` fields in
 `server.json` (the top-level one and `packages[0].version`), commit, and run
 `mcp-publisher publish` again. The registry rejects a version it already has.

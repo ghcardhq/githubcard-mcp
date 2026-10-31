@@ -5,7 +5,7 @@ and repository cards for READMEs, link previews and social posts, with live
 GitHub data.
 
 - **Hosted:** `https://githubcard.com/mcp` (Streamable HTTP). Nothing to install.
-- **Local:** `npx -y ghcard mcp` (stdio), from the
+- **Local:** `npx -y @ghcardhq/ghcard mcp` (stdio), from the
   [`ghcard` CLI](https://github.com/ghcardhq/ghcard). It can also edit a README on
   your disk.
 
@@ -52,7 +52,7 @@ pass your key, use the local server in `claude_desktop_config.json` instead:
   "mcpServers": {
     "githubcard": {
       "command": "npx",
-      "args": ["-y", "ghcard", "mcp"],
+      "args": ["-y", "@ghcardhq/ghcard", "mcp"],
       "env": { "GHCARD_API_KEY": "ghc_live_…" }
     }
   }
@@ -130,7 +130,7 @@ Then export `GHCARD_API_KEY=ghc_live_…` in your shell.
 Remote: Streamable HTTP at `https://githubcard.com/mcp`, header
 `Authorization: Bearer ghc_live_…`.
 
-Local (stdio): command `npx`, args `["-y", "ghcard", "mcp"]`, env
+Local (stdio): command `npx`, args `["-y", "@ghcardhq/ghcard", "mcp"]`, env
 `GHCARD_API_KEY`. Add `--allow-file-writes` to the args to enable
 `update_readme`. Needs Node.js 20 or later.
 
