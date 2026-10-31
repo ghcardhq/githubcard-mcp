@@ -1,0 +1,23 @@
+# Checks server.json against the MCP registry schema it declares.
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  server-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate server.json
+        run: |
+          curl -fsSL "$(node -p 'require("./server.json").$schema')" -o /tmp/schema.json
+          npx -y ajv-cli@5 validate --spec=draft7 -c ajv-formats -s /tmp/schema.json -d server.json --strict=false
