@@ -17,7 +17,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: npm install --no-save --no-package-lock ajv@8 ajv-formats@3
       - name: Validate server.json
         run: |
-          curl -fsSL "$(node -p 'require("./server.json").$schema')" -o /tmp/schema.json
-          npx -y ajv-cli@5 validate --spec=draft7 -c ajv-formats -s /tmp/schema.json -d server.json --strict=false
+          node --input-type=module <<'EOF'
+          import { readFileSync } from 'node:fs';
+          import Ajv from 'ajv';
+          import addFormats from 'ajv-formats';
+
+          const doc = JSON.parse(readFileSync('server.json', 'utf8'));
+          const schema = await (await fetch(doc.$schema)).json();
+          delete schema.$schema;
+          const ajv = new Ajv({ strict: false, allErrors: true });
+          addFormats(ajv);
+          const validate = ajv.compile(schema);
+          if (!validate(doc)) {
+            console.error(JSON.stringify(validate.errors, null, 2));
+            process.exit(1);
+          }
+          console.log(`server.json is valid against ${doc.$schema}`);
+          EOF
