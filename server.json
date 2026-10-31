@@ -3,7 +3,7 @@
   "name": "com.githubcard/mcp",
   "title": "GitHubCard",
   "description": "Create GitHub profile and repository cards for READMEs, link previews and social posts.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "websiteUrl": "https://githubcard.com",
   "repository": {
     "url": "https://github.com/ghcardhq/githubcard-mcp",
@@ -39,7 +39,7 @@
     {
       "registryType": "npm",
       "identifier": "@ghcardhq/ghcard",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "runtimeHint": "npx",
       "transport": { "type": "stdio" },
       "packageArguments": [{ "type": "positional", "value": "mcp" }],
