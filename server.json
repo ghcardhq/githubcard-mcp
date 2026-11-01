@@ -11,13 +11,13 @@
   },
   "icons": [
     {
-      "src": "https://githubcard.com/favicon.svg",
+      "src": "https://githubcard.com/brand/githubcard-mark.svg",
       "mimeType": "image/svg+xml"
     },
     {
-      "src": "https://githubcard.com/favicon-96x96.png",
+      "src": "https://githubcard.com/brand/githubcard-mark-512.png",
       "mimeType": "image/png",
-      "sizes": ["96x96"]
+      "sizes": ["512x512"]
     }
   ],
   "remotes": [
