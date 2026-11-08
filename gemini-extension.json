@@ -1,10 +1,21 @@
 {
   "name": "githubcard",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Create GitHub profile and repository cards for READMEs, link previews and social posts.",
+  "settings": [
+    {
+      "name": "GitHubCard API key",
+      "description": "Optional for catalogue tools. Required to create, list, edit or delete cards. Get one at https://githubcard.com/dashboard.",
+      "envVar": "GHCARD_API_KEY",
+      "sensitive": true
+    }
+  ],
   "mcpServers": {
     "githubcard": {
-      "httpUrl": "https://githubcard.com/mcp"
+      "httpUrl": "https://githubcard.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${GHCARD_API_KEY}"
+      }
     }
   }
 }

@@ -20,7 +20,7 @@ GitHub data.
 
 Ask things like:
 
-> Make a GitHubCard for my profile and add it to the top of my README.
+> Make a GitHubCard for my profile and add it near the top of my README.
 >
 > Create a dark card for `vercel/next.js` I can use as a link preview.
 >
@@ -33,8 +33,8 @@ Creating cards needs a free API key. Sign in at
 [githubcard.com/dashboard](https://githubcard.com/dashboard) and create one under
 **API keys**. It looks like `ghc_live_…`.
 
-Without a key, the server still lists templates, palettes and widget types, so
-you can try it before signing up.
+Without a key, the server still lists templates, palettes, widget types, and
+template designs, so you can try it before signing up.
 
 ## Setup
 
@@ -134,6 +134,15 @@ bearer_token_env_var = "GHCARD_API_KEY"
 
 Then export `GHCARD_API_KEY=ghc_live_…` in your shell.
 
+### Gemini CLI
+
+Install the extension from this repository. Gemini CLI asks for the optional
+API key during setup and stores it as a sensitive setting:
+
+```bash
+gemini extensions install https://github.com/ghcardhq/githubcard-mcp
+```
+
 ### Any other client
 
 Remote: Streamable HTTP at `https://githubcard.com/mcp`, header
@@ -147,12 +156,12 @@ Local (stdio): command `npx`, args `["-y", "@ghcardhq/ghcard", "mcp"]`, env
 
 | Tool | Key | What it does |
 | --- | --- | --- |
-| `create_card` | yes | Create (or reuse) a card for a user or `owner/repo`. Returns SVG/PNG links and Markdown/HTML embed snippets. Uses one unit of the daily quota |
+| `create_card` | yes | Create (or reuse) a card for a user, `owner/repo`, or GitHub URL. Returns SVG/PNG links and Markdown/HTML embed snippets. Uses one unit of the daily quota |
 | `validate_card` | yes | Dry run of `create_card`: checks ids, Pro features and custom designs, uses no quota |
 | `list_templates` | no | Layouts, filterable by scope (profile/repo), Free plan and widget types |
 | `list_palettes` | no | Background palettes |
 | `list_components` | no | Widget types a card can contain |
-| `get_template_design` | no | A template's layout as an editable design document |
+| `get_template_design` | no | A template's layout as an editable design document. Pass `subject` for a repo template |
 | `get_card_design` | yes | The design document of one of your cards |
 | `list_cards` | yes | Cards you have created |
 | `delete_card` | yes | Delete a card; its links stop working |
